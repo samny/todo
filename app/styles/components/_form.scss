@@ -1,0 +1,41 @@
+input[type=text] {
+    background: #fefefe;
+    padding: 0.5em;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid $border-color-input;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2) inset;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox] + span {
+
+    &:before{
+        content: '';
+        margin-right:10px;
+        vertical-align: middle;
+        width:19px;
+        height:19px;
+        background: url(../images/checkbox.png);
+        display:inline-block;
+    }
+
+}
+
+input[type=checkbox]:checked + span {
+    &:before{
+        background: url(../images/checkbox-selected.png);
+    }
+
+    color: #999999;
+    font-weight: 200;
+    text-shadow: none;
+    text-decoration: line-through;
+}
+
+button {
+    @extend .button;
+}

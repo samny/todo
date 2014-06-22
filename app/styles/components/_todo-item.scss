@@ -1,13 +1,15 @@
 .m-todo-item{
+    position:relative;
     list-style: none;
     margin:0;
     padding:0;
     user-select: none;
+    text-shadow: 1px 1px 0px #fff;
 
     > label{
         display:block;
         margin: 0;
-        padding: 24px;
+        @include to-rem(padding, 16px, 21px);
     }
 }
 
