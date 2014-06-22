@@ -1,0 +1,11 @@
+$default-font-family: 'Open Sans', sans-serif;
+$title-font-family: 'Open Sans', sans-serif;
+$icon-font-family: '';
+
+$default-font-weight: 400;
+$heavy-font-weight: 700;
+$light-font-weight: 200;
+
+$font-size: 87.5 !default; // percentage value (16 * 87.5% = 14px)
+$font-base: 16 * ($font-size/100) !default; // converts our percentage to a pixel value
+

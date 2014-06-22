@@ -1,0 +1,44 @@
+html, body
+{
+    height: 100%;
+}
+
+html {
+    font-size: $font-size * 1%;
+}
+
+body {
+    min-height: 100%;
+    color: $text-color;
+    font-family: $default-font-family;
+    background: $main-bg-color;
+}
+
+
+h1 {
+    @include to-em(font-size, 30px);
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: $link-color;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.page-wrapper{
+    position:relative;
+    padding: 0px;
+    @include media-query(lap-and-up){
+        padding: 3%;
+    }
+}
+
+

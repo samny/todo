@@ -1,0 +1,87 @@
+$font-base: 16 !default;
+
+// http://www.stubbornella.org/content/2013/07/01/easy-peasy-rem-conversion-with-sass/
+@function calculateRem($pxSize) {
+    $remSize: $pxSize / $font-base;
+    @return #{$remSize}rem;
+}
+
+@function strip-unit($num) {
+    @return $num / ($num * 0 + 1);
+}
+
+// http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
+// @include rem-fallback(padding, 10rem, 15rem, 20rem, 30rem);
+@mixin rem-fallback($property, $values...) {
+    $max: length($values);
+    $pxValues: '';
+    $remValues: '';
+
+    @for $i from 1 through $max {
+        $value: strip-unit(nth($values, $i));
+        $pxValues: #{$pxValues + $value * $font-base}px;
+
+        @if $i < $max {
+            $pxValues: #{$pxValues + " "};
+        }
+    }
+
+    @for $i from 1 through $max {
+        $value: strip-unit(nth($values, $i));
+        $remValues: #{$remValues + $value}rem;
+
+        @if $i < $max {
+            $remValues: #{$remValues + " "};
+        }
+    }
+
+    #{$property}: $pxValues;
+    #{$property}: $remValues;
+}
+
+// @include to-rem(padding, 10px, 15px, 20px, 30px);
+@mixin to-rem($property, $values...) {
+    $max: length($values);
+    $pxValues: '';
+    $remValues: '';
+    $unit: rem;
+
+    @for $i from 1 through $max {
+        $value: strip-unit(nth($values, $i));
+        $pxValues: #{$pxValues + $value}px;
+
+        @if $i < $max {
+            $pxValues: #{$pxValues + " "};
+        }
+    }
+
+    @for $j from 1 through $max {
+        $value: strip-unit(nth($values, $j));
+        $remValues: #{$remValues + ($value / $font-base)}$unit;
+
+        @if $j < $max {
+            $remValues: #{$remValues + " "};
+        }
+    }
+
+    #{$property}: $pxValues;
+    #{$property}: $remValues;
+}
+
+@mixin to-em($property, $values...) {
+    $max: length($values);
+    $pxValues: '';
+    $emValues: '';
+    $unit: em;
+
+    @for $j from 1 through $max {
+        $value: strip-unit(nth($values, $j));
+        $emValues: #{$emValues + ($value / $font-base)}$unit;
+
+        @if $j < $max {
+            $emValues: #{$emValues + " "};
+        }
+    }
+
+    #{$property}: $emValues;
+}

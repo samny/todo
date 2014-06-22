@@ -1,0 +1,23 @@
+{
+  "name": "todo",
+  "version": "0.0.0",
+  "authors": [
+    "Samuel Nystedt <samuel.nystedt@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.1.2",
+    "jquery": "~2.1.1",
+    "modernizr": "~2.8.2",
+    "requirejs": "~2.1.14"
+  }
+}

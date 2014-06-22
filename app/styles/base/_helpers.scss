@@ -1,0 +1,11 @@
+.cf{
+    @include clearfix;
+}
+
+.hide-text{
+    @include hide-text;
+}
+
+.align-right{
+    text-align:right;
+}

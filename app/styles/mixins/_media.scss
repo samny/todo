@@ -1,0 +1,93 @@
+// palm
+// lap
+// lap-and-up
+// portable
+// desk
+// desk-wide
+
+
+
+@mixin media-query($media-query) {
+    $palm-end: $lap-start - 1px;
+    $lap-end: $desk-start - 1px;
+
+    // Only mobile
+    @if $media-query == palm{
+        @include respond-max($palm-end) {
+            @content;
+        }
+    }
+
+    @if $media-query == lap{
+        @include respond-between($lap-start, $lap-end) {
+            @content;
+        }
+    }
+
+    @if $media-query == lap-and-up{
+
+        @include respond-min($lap-start) {
+            @content;
+        }
+    }
+
+    @if $media-query == portable{
+
+        @include respond-max($lap-end) {
+            @content;
+        }
+    }
+
+    @if $media-query == desk{
+
+        @include respond-min($desk-start) {
+            @content;
+        }
+    }
+
+    @if $media-query == desk-wide{
+
+        @include respond-min($desk-wide-start) {
+            @content;
+        }
+    }
+
+}
+
+$fix-mqs: false !default;
+
+@mixin respond-min($width) {
+    @if $fix-mqs {
+        @if $fix-mqs >= $width {
+            @content;
+        }
+    } @else {
+        @media only screen and (min-width: $width) {
+            @content;
+        }
+    }
+}
+
+@mixin respond-max($width) {
+    @if $fix-mqs {
+        @if $fix-mqs <= $width {
+            @content;
+        }
+    } @else {
+        @media only screen and (max-width: $width) {
+            @content;
+        }
+    }
+}
+
+@mixin respond-between($min-width, $max-width) {
+    @if $fix-mqs {
+        @if $fix-mqs >= $min-width and $fix-mqs <= $max-width {
+            @content;
+        }
+    } @else {
+        @media only screen and (min-width: $min-width) and (max-width: $max-width) {
+            @content;
+        }
+    }
+}

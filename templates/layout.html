@@ -1,0 +1,49 @@
+
+<!--[if HTML5]><![endif]-->
+<!doctype html>
+<!--[if lt IE 7]>      <html lang="sv" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="sv" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="sv" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="sv" class="no-js"> <!--<![endif]-->
+<head>
+	<!--[if !HTML5]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<![endif]-->
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta name="msapplication-square70x70logo" content="/ui/icons/favicons/windows-tile-70x70.png">
+	<meta name="msapplication-square150x150logo" content="/ui/icons/favicons/windows-tile-150x150.png">
+	<meta name="msapplication-square310x310logo" content="/ui/icons/favicons/windows-tile-310x310.png">
+	<meta name="msapplication-TileImage" content="/ui/icons/favicons/windows-tile-144x144.png">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/ui/icons/favicons/apple-touch-icon-152x152-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/ui/icons/favicons/apple-touch-icon-120x120-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/ui/icons/favicons/apple-touch-icon-76x76-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/ui/icons/favicons/apple-touch-icon-60x60-precomposed.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/ui/icons/favicons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/ui/icons/favicons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/ui/icons/favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="57x57" href="/ui/icons/favicons/apple-touch-icon.png">
+	<link rel="shortcut icon" href="/ui/icons/favicons/favicon.ico">
+	<link rel="icon" type="image/png" sizes="64x64" href="/static/app/images/favicons/favicon.png">
+
+	<link rel="stylesheet" href="dist/styles/main.css">
+
+	<script src="bower_components/modernizr/modernizr.js"></script>
+	<!--[if lt IE 9]>
+	<script src="bower_components/html5shiv/dist/html5shiv.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+<div id="page-wrapper">
+	{% block body %}{% endblock %}
+</div>
+<script src="bower_components/dist/jquery/dist/jquery"></script>
+<script src="bower_components/requirejs/require.js" data-main="app/scripts/bootstrapper.js"></script>
+
+</body>
+</html>

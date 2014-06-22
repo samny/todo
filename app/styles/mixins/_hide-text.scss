@@ -1,0 +1,12 @@
+@mixin hide-text {
+    overflow: hidden;
+    background-color: transparent;
+    border: 0;
+    color: transparent;
+    font: 0px/0 a;
+    text-shadow: none;
+
+    /* IE 6/7 fallback */
+    *text-indent: -9999px;
+
+}
