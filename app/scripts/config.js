@@ -7,6 +7,7 @@
 
 define(function () {
     'use strict';
+
     return require.config({
 
         paths: {

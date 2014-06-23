@@ -4,7 +4,11 @@
 define([
     'backbone'
 ], function (Backbone) {
-    Backbone.Model.extend({
-
+    return Backbone.Model.extend({
+        defaults: {
+            title: '',
+            description:'',
+            completed: false
+        }
     });
 });

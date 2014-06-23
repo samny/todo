@@ -5,6 +5,7 @@ input[type=text] {
     outline: none;
     border: 1px solid $border-color-input;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2) inset;
+    -webkit-font-smoothing: antialiased;
 }
 
 input[type=checkbox] {

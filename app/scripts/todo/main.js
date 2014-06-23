@@ -1,12 +1,13 @@
 define([
     'underscore',
     'backbone',
-    './views/LoginForm',
-    './views/TasksList'
-], function (_, Backbone, LoginForm, TasksList) {
+    './views/TodoApp',
+], function (_, Backbone, TodoApp) {
     'use strict';
 
-    return {init: function () {
-
-    }};
+    return {
+        init: function () {
+            new TodoApp();
+        }
+    };
 });

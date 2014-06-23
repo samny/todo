@@ -9,41 +9,29 @@ app = Flask(__name__, static_url_path = "", static_folder='dist')
 api = Api(app)
 auth = HTTPBasicAuth()
 
-@auth.get_password
-def get_password(username):
-    if username == 'miguel':
-        return 'python'
-    return None
-
-@auth.error_handler
-def unauthorized():
-    return make_response(jsonify( { 'message': 'Unauthorized access' } ), 403)
-    # return 403 instead of 401 to prevent browsers from displaying the default auth dialog
-
 tasks = [
     {
         'id': 1,
         'title': u'Buy groceries',
         'description': u'Milk, Cheese, Pizza, Fruit, Tylenol',
-        'done': False
+        'completed': False
     },
     {
         'id': 2,
         'title': u'Learn Python',
         'description': u'Need to find a good Python tutorial on the web',
-        'done': False
+        'completed': True
     }
 ]
 
 task_fields = {
     'title': fields.String,
     'description': fields.String,
-    'done': fields.Boolean,
+    'completed': fields.Boolean,
     'uri': fields.Url('task')
 }
 
 class TaskListAPI(Resource):
-    decorators = [auth.login_required]
 
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
@@ -52,7 +40,7 @@ class TaskListAPI(Resource):
         super(TaskListAPI, self).__init__()
 
     def get(self):
-        return { 'tasks': map(lambda t: marshal(t, task_fields), tasks) }
+        return map(lambda t: marshal(t, task_fields), tasks)
 
     def post(self):
         args = self.reqparse.parse_args()
@@ -63,10 +51,9 @@ class TaskListAPI(Resource):
             'done': False
         }
         tasks.append(task)
-        return { 'task': marshal(task, task_fields) }, 201
+        return marshal(task, task_fields), 201
 
 class TaskAPI(Resource):
-    decorators = [auth.login_required]
 
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
@@ -79,7 +66,7 @@ class TaskAPI(Resource):
         task = filter(lambda t: t['id'] == id, tasks)
         if len(task) == 0:
             abort(404)
-        return { 'task': marshal(task[0], task_fields) }
+        return marshal(task[0], task_fields)
 
     def put(self, id):
         task = filter(lambda t: t['id'] == id, tasks)
@@ -90,7 +77,7 @@ class TaskAPI(Resource):
         for k, v in args.iteritems():
             if v != None:
                 task[k] = v
-        return { 'task': marshal(task, task_fields) }
+        return marshal(task, task_fields)
 
     def delete(self, id):
         task = filter(lambda t: t['id'] == id, tasks)
@@ -102,6 +89,9 @@ class TaskAPI(Resource):
 api.add_resource(TaskListAPI, '/todo/api/v1.0/tasks', endpoint = 'tasks')
 api.add_resource(TaskAPI, '/todo/api/v1.0/tasks/<int:id>', endpoint = 'task')
 
+@app.route('/')
+def root():
+    return app.send_static_file('index.html')
 
 if __name__ == '__main__':
     app.run(debug = True)

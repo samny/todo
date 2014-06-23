@@ -4,7 +4,6 @@
 define([
     'backbone'
 ], function (Backbone) {
-    Backbone.View.extend({
-
+    return Backbone.View.extend({
     });
 });
