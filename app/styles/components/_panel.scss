@@ -1,31 +1,31 @@
-.m-panel{
+.m-panel {
     background: $component-bg-color;
     margin: 0;
 
-    @include media-query(lap-and-up){
+    @include media-query(lap-and-up) {
         border: 1px solid $border-color;
-        border-radius:6px;
+        border-radius: 6px;
         max-width: 500px;
         margin: 0 auto;
     }
 }
 
-.m-panel__header{
+.m-panel__header {
     background: url(../images/ruler.png) bottom center repeat-x;
-    padding: 24px;
-    h1{
+    @include to-rem(padding, 21px);
+
+    h1 {
         text-align: center;
         margin: 0;
     }
 }
 
-.m-panel__content{
-
+.m-panel__content {
+    @include to-rem(padding, 21px);
 }
 
-
-.m-panel__footer{
+.m-panel__footer {
     @include to-rem(font-size, 13px);
-    padding: 24px;
+    @include to-rem(padding, 21px);
     background: url(../images/ruler.png) top center repeat-x;
 }

@@ -34,19 +34,21 @@
 	<a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
 
 <div class="page-wrapper">
-	<div class="m-panel">
+	<div class="m-panel m-todo-app" id="TodoApp">
 		<header class="m-panel__header">
 			<h1>Todos</h1>
 		</header>
-		<div id="TodoApp" class="m-panel__content m-todo">
-			<div class="m-todo-add cf">
-				<input  class="m-todo-add--input"type="text" required="true" placeholder="What needs to be done"/>
-				<button class="m-todo-add--submit">Add Todo</button>
-			</div>
+
+		<div class="m-panel__content cf">
+			<input class="m-todo-app__input" type="text" required="true" placeholder="What needs to be done"/>
+			<button class="m-todo-app__submit">Add Todo</button>
 		</div>
+		<ul class="m-todo-app__list"></ul>
+
 		<div class="m-panel__footer cf">
-			<div class="l-half"><span class="m-todo-info">2 items left</span></div>
-			<div class="l-half align-right"><a href="#" class="m-todo-markall">Mark all as complete</a></div>
+			<div class="l-half"><span class="m-todo-app__info">2 items left</span></div>
+			<div class="l-half align-right"><a href="#" class="m-todo-app__clear">Clear
+				completed</a><br><a href="#" class="m-todo-app__completeall">Mark all as completed</a></div>
 		</div>
 	</div>
 </div>

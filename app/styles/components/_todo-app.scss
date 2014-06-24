@@ -1,0 +1,13 @@
+.m-todo-app__form {
+    @include to-rem(padding, 21px);
+}
+
+.m-todo-app__input {
+    width: 60%;
+    float: left;
+}
+
+.m-todo-app__submit {
+    width: 30%;
+    float: right;
+}
