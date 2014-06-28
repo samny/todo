@@ -1,0 +1,58 @@
+<!doctype html>
+<html class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>todo</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<script type="text/javascript">
+		WebFontConfig = {
+			google: { families: [ 'Open+Sans:400,600,700:latin' ] }
+		};
+		(function () {
+			var wf = document.createElement('script');
+			wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+					'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+			wf.type = 'text/javascript';
+			wf.async = 'true';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(wf, s);
+		})();
+	</script>
+
+	<link rel="stylesheet" href="styles/main.css"/>
+
+	<script src="scripts/vendor/modernizr.js"></script>
+</head>
+<body>
+<!--[if lt IE 10]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please
+	<a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+
+<div class="page-wrapper">
+	<form class="m-panel m-todo-app" id="TodoApp">
+		<header class="m-panel__header">
+			<h1>Todos</h1>
+		</header>
+
+		<div class="m-panel__content cf">
+			<input class="m-todo-app__input" type="text" required="true" placeholder="What needs to be done"/>
+			<button class="m-todo-app__submit">Add Todo</button>
+		</div>
+		<ul class="m-todo-app__list"></ul>
+
+		<div class="m-panel__footer cf">
+			<div class="l-half"><span class="m-todo-app__info">&nbsp;</span></div>
+			<div class="l-half align-right"><a href="#" class="m-todo-app__clear">Clear
+				completed</a><br><a href="#" class="m-todo-app__completeall">Mark all as completed</a></div>
+		</div>
+	</form>
+</div>
+
+</div>
+
+<script src="scripts/vendor/require.js"></script>
+<script src="scripts/bootstrapper.js"></script>
+
+</body>
+</html>

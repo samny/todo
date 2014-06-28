@@ -5,7 +5,7 @@ from flask.views import MethodView
 from flask.ext.restful import Api, Resource, reqparse, fields, marshal
 from flask.ext.httpauth import HTTPBasicAuth
 
-app = Flask(__name__, static_url_path = "", static_folder = "dist")
+app = Flask(__name__, static_url_path = "")
 api = Api(app)
 auth = HTTPBasicAuth()
 
