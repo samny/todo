@@ -2,12 +2,33 @@
     @include to-rem(padding, 21px);
 }
 
-.m-todo-app__input {
-    width: 60%;
+.m-todo-app__input[type="text"] {
+    box-sizing: border-box;
+    width: 70%;
     float: left;
+    border-radius: 4px 0 0 4px;
+    border-right-width: 0;
+
+    @include media-query(lap-and-up) {
+        border-radius: 4px;
+        border-right-width: 1px;
+    }
 }
 
 .m-todo-app__submit {
+    box-sizing: border-box;
     width: 30%;
-    float: right;
+    float: left;
+    border-radius: 0 4px 4px 0;
+
+    @include media-query(lap-and-up) {
+        width: 27%;
+        margin-left: 3%;
+        border-radius: 4px;
+    }
+
+}
+
+.m-todo-app__info {
+    color: #999;
 }

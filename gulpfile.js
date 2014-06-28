@@ -12,7 +12,7 @@ gulp.task('styles', function () {
             precision: 10,
             sourcemap: true
         }))
-        .pipe($.autoprefixer('last 1 version'))
+        .pipe($.autoprefixer('last 3 versions'))
         .pipe(gulp.dest('.tmp/styles'))
         .pipe($.size());
 });

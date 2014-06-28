@@ -5,8 +5,9 @@ define([
     'underscore',
     'backbone',
     '../collections/Tasks',
-    '../views/TodoItem'
-], function (_, Backbone, Tasks, TodoItem) {
+    '../views/TodoItem',
+    'sortable'
+], function (_, Backbone, Tasks, TodoItem, nativesortable) {
 
     return Backbone.View.extend({
         el: '#TodoApp',
@@ -43,7 +44,12 @@ define([
         },
 
         addItem: function (task) {
-            this.$list.append(new TodoItem({ model: task }).render().el);
+            var item = new TodoItem({ model: task}).render().el;
+            this.$list.append(item);
+
+            nativesortable(this.$list[0], { change: function (e) {
+                console.log('hej');
+            }});
         },
 
         resetItems: function (collection) {
@@ -52,6 +58,7 @@ define([
             collection.each(function (i, task) {
                 self.addItem(task);
             });
+
         },
 
         createNewItem: function () {

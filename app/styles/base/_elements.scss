@@ -1,5 +1,4 @@
-html, body
-{
+html, body {
     height: 100%;
 }
 
@@ -14,7 +13,6 @@ body {
     -webkit-font-smoothing: antialiased;
     background: $main-bg-color;
 }
-
 
 h1 {
     @include to-em(font-size, 30px);
@@ -34,10 +32,24 @@ a {
     }
 }
 
-.page-wrapper{
-    position:relative;
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+[draggable] * {
+    -moz-user-drag: none;
+    -khtml-user-drag: none;
+    -webkit-user-drag: none;
+    user-drag: none;
+}
+
+.page-wrapper {
+    position: relative;
     padding: 0px;
-    @include media-query(lap-and-up){
+    @include media-query(lap-and-up) {
         padding: 3%;
     }
 }

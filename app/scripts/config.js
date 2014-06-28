@@ -13,7 +13,8 @@ define(function () {
         paths: {
             jquery: 'lib/jquery',
             underscore: 'lib/underscore',
-            backbone: 'lib/backbone'
+            backbone: 'lib/backbone',
+            sortable: 'lib/nativesortable'
         },
         packages: [
             { name: 'todo', location: 'todo' }

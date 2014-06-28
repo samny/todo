@@ -5,14 +5,27 @@
     padding: 0;
     user-select: none;
     text-shadow: 1px 1px 0px #fff;
+    background: #fff;
+    overflow: hidden;
 
     > label {
         display: block;
         margin: 0;
+        cursor: row-resize;
         @include to-rem(padding, 16px, 21px);
+
+        > span {
+            cursor: auto;
+        }
+    }
+
+    &:hover {
+        background-image: url(../images/draghandle.png);
+        background-repeat: no-repeat;
+        background-position: right center;
     }
 }
 
 .m-todo-item:nth-child(odd) {
-    background: $row-alt-color;
+    background-color: $row-alt-color;
 }
