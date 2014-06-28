@@ -7,26 +7,26 @@ define([
     '../collections/Tasks',
     '../views/TodoItem'
 ], function (_, Backbone, Tasks, TodoItem) {
-    var tasks = new Tasks();
 
     return Backbone.View.extend({
         el: '#TodoApp',
         collection: null,
         events: {
-            'keyup .m-todo-app__input': 'handleKeyboard',
+            'keyup .m-todo-app__input': 'handleKeyboardSubmit',
             'click .m-todo-app__submit': 'handleSubmit',
             'click .m-todo-app__clear': 'handleClear',
             'click .m-todo-app__completeall': 'handleCompleteAll'
         },
+
         initialize: function () {
             _.bindAll(this,
                 'render',
-                'handleKeyboard',
+                'handleKeyboardSubmit',
                 'handleSubmit',
                 'addItem',
                 'handleClear',
                 'resetItems',
-                'handleCollection',
+                'handleCollectionEvents',
                 'handleCompleteAll'
             );
 
@@ -35,29 +35,53 @@ define([
             this.$info = this.$el.find('.m-todo-app__info');
 
             this.collection = new Tasks();
-            this.collection.on('all', this.handleCollection);
+            this.collection.on('all', this.handleCollectionEvents);
         },
 
+        render: function () {
+            this.$info.text(this.collection.getNumUncompleted() + ' items left');
+        },
 
-        handleCollection: function (type, data) {
-            console.log(type);
+        addItem: function (task) {
+            this.$list.append(new TodoItem({ model: task }).render().el);
+        },
+
+        resetItems: function (collection) {
+            var self = this;
+            this.$list.empty();
+            collection.each(function (i, task) {
+                self.addItem(task);
+            });
+        },
+
+        createNewItem: function () {
+            var title = this.$input.val();
+            if (title) {
+                this.$input.val('');
+                this.collection.add({title: title});
+            }
+        },
+
+        handleCollectionEvents: function (type, data) {
             switch (type) {
                 case 'add':
-                    this.updateTasksLeft();
                     this.addItem(data);
+                    this.render();
                     break;
-                case 'change':
-                    this.updateTasksLeft();
+                case 'change:completed':
+                    this.render();
+                    break;
+                case 'remove':
+                    this.render();
                     break;
                 case 'reset':
-                    this.updateTasksLeft();
                     this.resetItems(data);
+                    this.render();
                     break;
             }
-
         },
 
-        handleKeyboard: function (e) {
+        handleKeyboardSubmit: function (e) {
             if (e.keyCode === 13) {
                 e.preventDefault();
                 this.createNewItem();
@@ -73,35 +97,10 @@ define([
             e.preventDefault();
             this.collection.removeCompleted();
         },
+
         handleCompleteAll: function (e) {
             e.preventDefault();
             this.collection.completeAll();
-        },
-
-        addItem: function (task) {
-            this.$list.append(new TodoItem({ model: task }).render().el);
-        },
-
-
-        resetItems: function (collection) {
-            var self = this;
-            this.$list.empty();
-            collection.each(function (i, task) {
-                self.addItem(task);
-            });
-        },
-        createNewItem: function () {
-            console.log('new', this.$input);
-
-            var title = this.$input.val();
-            if (title) {
-                this.collection.create({title: title});
-                this.$input.val('');
-            }
-        },
-        updateTasksLeft: function(){
-            this.$info.text( this.collection.getNumUncompleted() + ' items left');
         }
-
     });
 });

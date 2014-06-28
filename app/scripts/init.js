@@ -6,7 +6,5 @@ define([
     'todo'
 ], function (_, todo) {
     'use strict';
-
-
     return todo.init();
 });
