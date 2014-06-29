@@ -7,6 +7,7 @@
     border-radius: 4px;
     outline: none;
     border: 1px solid $border-color-button;
+    white-space: nowrap;
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 1px 0px 0px rgba(255, 255, 255, .5) inset, 0 -5px 5px 0px rgba(0, 0, 0, 0.05) inset;
     background-image: linear-gradient(to bottom, rgba(255, 255, 255, .5) 50%, rgba(255, 255, 255, 0) 50%);
 
