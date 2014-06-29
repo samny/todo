@@ -43,6 +43,12 @@ input[type=checkbox] + span {
     }
 }
 
+input[type=checkbox]:focus + span{
+    &:before {
+        box-shadow: 0 0 0 1px #888888, 0 0 0 3px #81D8FF, 0 2px 0 -1px rgba(255, 255, 255, 0.9) inset, 0 -5px 5px 0px rgba(0, 0, 0, 0.05) inset;
+    }
+}
+
 input[type=checkbox]:checked + span {
     color: #999999;
     font-weight: 200;
@@ -50,12 +56,17 @@ input[type=checkbox]:checked + span {
     text-decoration: line-through;
 
     &:before {
-        //        content: "\2714";
         content: "\2714";
         font-size: 0.95em;
         color: #0b4164;
         background-color: #298bb8;
         box-shadow: 0 0 0 1px #316281, 0 0 0 3px #ccc, 0 2px 0 -1px rgba(255, 255, 255, 0.4) inset, 0 -5px 5px 0px rgba(0, 0, 0, 0.05) inset;
+    }
+}
+
+input[type=checkbox]:checked:focus + span{
+    &:before {
+        box-shadow: 0 0 0 1px #316281, 0 0 0 3px #81D8FF, 0 2px 0 -1px rgba(255, 255, 255, 0.4) inset, 0 -5px 5px 0px rgba(0, 0, 0, 0.05) inset;
     }
 }
 
